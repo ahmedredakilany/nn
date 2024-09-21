@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home page</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background: rgb(179, 224, 247);
+            background: -moz-radial-gradient(circle, rgba(179, 224, 247, 1) 0%, rgba(65, 181, 242, 1) 79%);
+            background: -webkit-radial-gradient(circle, rgba(179, 224, 247, 1) 0%, rgba(65, 181, 242, 1) 79%);
+            background: radial-gradient(circle, rgba(179, 224, 247, 1) 0%, rgba(65, 181, 242, 1) 79%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b3e0f7", endColorstr="#41b5f2", GradientType=1);
+            height: 100vh;
+
+            background-image: url(/imgs/+\ 50\ GB\ Internet.png);
+            background-position: center;
+            background-size: cover;
+
+        }
+
+        .main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .head {
+            font-size: 30px;
+            color: aliceblue;
+            text-shadow: 2px 1px #000000;
+            text-align: center;
+        }
+
+        .language-switcher {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .language-switcher button {
+            background-color: #ffffff;
+            border: 1px solid #000;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="language-switcher">
+        <button id="lang-switch">Switch to English</button>
+    </div>
+    <section class="main">
+
+        <div class="container">
+            <p class="head" id="offer-text">
+                رصيد بقيمة 100 دينار + 50 جيجا انترنت صالحين لمدة 6 شهور⏳
+            </p>
+
+            <div class="choice">
+                <ul>
+                    <li>
+                        <a href="emarat.html" id="emarat-link">الإمارات</a>
+                    </li>
+                    <li>
+                        <a href="kwiet.html" id="kuwait-link">الكويت</a>
+                    </li>
+                    <li>
+                        <a href="oman.html" id="oman-link">عمان</a>
+                    </li>
+                </ul>
+            </div>
+
+
+        </div>
+    </section>
+
+    <script>
+        const translations = {
+            en: {
+                offer: "Balance of 100 Dinars + 50GB internet valid for 6 months ⏳",
+                emarat: "UAE",
+                kuwait: "Kuwait",
+                oman: "Oman",
+                switchButton: "Switch to Arabic"
+            },
+            ar: {
+                offer: "رصيد بقيمة 100 دينار + 50 جيجا انترنت صالحين لمدة 6 شهور⏳",
+                emarat: "الإمارات",
+                kuwait: "الكويت",
+                oman: "عمان",
+                switchButton: "التبديل إلى الإنجليزية"
+            }
+        };
+
+        let currentLang = 'ar'; // اللغة الافتراضية
+
+        // تبديل اللغة عند الضغط على الزر
+        document.getElementById('lang-switch').addEventListener('click', function () {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            translatePage();
+        });
+
+        function translatePage() {
+            const lang = translations[currentLang];
+
+            // تحديث النصوص على الصفحة
+            document.getElementById('offer-text').innerText = lang.offer;
+            document.getElementById('emarat-link').innerText = lang.emarat;
+            document.getElementById('kuwait-link').innerText = lang.kuwait;
+            document.getElementById('oman-link').innerText = lang.oman;
+            document.getElementById('lang-switch').innerText = lang.switchButton;
+        }
+
+        // استدعاء الدالة لترجمة الصفحة بناءً على اللغة الافتراضية
+        translatePage();
+    </script>
+
+</body>
+
+</html>

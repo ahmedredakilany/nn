@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background: rgb(179, 224, 247);
+            background: -moz-radial-gradient(circle, rgba(179, 224, 247, 1) 0%, rgba(65, 181, 242, 1) 79%);
+            background: -webkit-radial-gradient(circle, rgba(179, 224, 247, 1) 0%, rgba(65, 181, 242, 1) 79%);
+            background: radial-gradient(circle, rgba(179, 224, 247, 1) 0%, rgba(65, 181, 242, 1) 79%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b3e0f7", endColorstr="#41b5f2", GradientType=1);
+            height: 100vh;
+        }
+
+        .main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+
+
+        body:after {
+            content: '';
+            width: 100%;
+            height: 100%;
+            top: 0;
+            position: fixed;
+            z-index: 999999;
+            background-color: #000000;
+            background-image: url(imgs/oman.png);
+            /* الصورة */
+            left: 0;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            animation: pulse-in-out 2.5s ease-in-out forwards, background-change 2s ease-in forwards;
+            transform: scale(0);
+            border: none;
+        }
+
+        @keyframes pulse-in-out {
+            0% {
+                opacity: 1;
+                transform: translateY(-100px);
+            }
+
+            25% {
+                opacity: 1;
+                transform: translateY(-200px);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: translateY(-300px);
+            }
+
+            75% {
+                opacity: 0.5;
+                transform: translateY(-450px);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-10000px);
+            }
+        }
+
+        @keyframes background-change {
+            0% {
+                background-color: transparent;
+            }
+
+            50% {
+                background-color: transparent;
+            }
+
+            100% {
+                background-color: transparent;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="language-switcher">
+        <button id="lang-switch">التبديل إلى الإنجليزية</button>
+    </div>
+    <section class="main">
+        <div class="container">
+            <div class="img">
+
+                <img class="flag" src="imgs/عمان.png" alt="">
+            </div>
+
+            <p class="head-sub" id="page-title">
+                عمان
+            </p>
+
+            <div class="choice-1">
+                <div class="select-container">
+                    <select id="service-provider" title="name">
+                        <option value="provider">مزود الخدمة</option>
+                        <option value="omantel">عمانتل</option>
+                        <option value="ooredoo">أوريدو</option>
+                        <option value="renna">رنا</option>
+                        <option value="dalkom">دالكم</option>
+                        <option value="salah">صلاح</option>
+                        <option value="data">بيانات</option>
+                        <option value="mawa">موا</option>
+                        <option value="sultan">سلطان</option>
+                        <option value="haya">هيا</option>
+                    </select>
+                </div>
+            </div>
+            <div class="choice-1">
+                <input type="number" id="phone-number" placeholder="رقم الهاتف">
+            </div>
+            <div class="choice-1">
+                <input type="button" id="submit-btn" value="تسجيل">
+            </div>
+
+
+        </div>
+    </section>
+
+    <script defer>
+        const translations = {
+            en: {
+                title: "Oman",
+                serviceProvider: "Service Provider",
+                phoneNumber: "Phone Number",
+                submitButton: "Register",
+                switchButton: "Switch to Arabic",
+                options: {
+                    provider: "Service Provider",
+                    omantel: "Omantel",
+                    ooredoo: "Ooredoo",
+                    renna: "Renna",
+                    dalkom: "Dalkom",
+                    salah: "Salah",
+                    data: "Data",
+                    mawa: "Mawa",
+                    sultan: "Sultan",
+                    haya: "Haya"
+                }
+            },
+            ar: {
+                title: "عمان",
+                serviceProvider: "مزود الخدمة",
+                phoneNumber: "رقم الهاتف",
+                submitButton: "تسجيل",
+                switchButton: "التبديل إلى الإنجليزية",
+                options: {
+                    provider: "مزود الخدمة",
+                    omantel: "عمانتل",
+                    ooredoo: "أوريدو",
+                    renna: "رنا",
+                    dalkom: "دالكم",
+                    salah: "صلاح",
+                    data: "بيانات",
+                    mawa: "موا",
+                    sultan: "سلطان",
+                    haya: "هيا"
+                }
+            }
+        };
+
+        let currentLang = 'ar'; // اللغة الافتراضية
+
+        // تبديل اللغة
+        document.getElementById('lang-switch').addEventListener('click', function () {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            translatePage();
+        });
+
+        function translatePage() {
+            const lang = translations[currentLang];
+
+            // تحديث النصوص على الصفحة
+            document.getElementById('page-title').innerText = lang.title;
+            document.getElementById('service-provider').options[0].innerText = lang.options.provider;
+            document.getElementById('service-provider').options[1].innerText = lang.options.omantel;
+            document.getElementById('service-provider').options[2].innerText = lang.options.ooredoo;
+            document.getElementById('service-provider').options[3].innerText = lang.options.renna;
+            document.getElementById('service-provider').options[4].innerText = lang.options.dalkom;
+            document.getElementById('service-provider').options[5].innerText = lang.options.salah;
+            document.getElementById('service-provider').options[6].innerText = lang.options.data;
+            document.getElementById('service-provider').options[7].innerText = lang.options.mawa;
+            document.getElementById('service-provider').options[8].innerText = lang.options.sultan;
+            document.getElementById('service-provider').options[9].innerText = lang.options.haya;
+            document.getElementById('phone-number').placeholder = lang.phoneNumber;
+            document.getElementById('submit-btn').value = lang.submitButton;
+            document.getElementById('lang-switch').innerText = lang.switchButton;
+        }
+
+        // استدعاء الدالة لترجمة الصفحة بناءً على اللغة الافتراضية
+        translatePage();
+    </script>
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

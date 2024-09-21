@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">الكويت</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background: rgb(179, 224, 247);
+            background: -moz-radial-gradient(circle, rgba(179, 224, 247, 1) 0%, rgba(65, 181, 242, 1) 79%);
+            background: -webkit-radial-gradient(circle, rgba(179, 224, 247, 1) 0%, rgba(65, 181, 242, 1) 79%);
+            background: radial-gradient(circle, rgba(179, 224, 247, 1) 0%, rgba(65, 181, 242, 1) 79%);
+            height: 100vh;
+        }
+
+        .main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        body:after {
+            content: '';
+            width: 100%;
+            height: 100%;
+            top: 0;
+            position: fixed;
+            z-index: 999999;
+            background-color: #ffffff;
+            background-image: url(imgs/kwiet.png);
+            left: 0;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            animation: pulse-in-out 2.5s ease-in-out forwards, background-change 2s ease-in forwards;
+            transform: scale(0);
+            border: none;
+        }
+
+        @keyframes pulse-in-out {
+            0% {
+                opacity: 1;
+                transform: translateY(-100px);
+            }
+
+            25% {
+                opacity: 1;
+                transform: translateY(-200px);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: translateY(-300px);
+            }
+
+            75% {
+                opacity: 0.5;
+                transform: translateY(-450px);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-10000px);
+            }
+        }
+
+        @keyframes background-change {
+            0% {
+                background-color: transparent;
+            }
+
+            50% {
+                background-color: transparent;
+            }
+
+            100% {
+                background-color: transparent;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="language-switcher">
+        <button id="lang-switch">التبديل إلى الإنجليزية</button>
+    </div>
+    <section class="main">
+        <div class="container">
+            <div class="img">
+                <img class="flag" src="imgs/الكويت.png" alt="">
+            </div>
+            <p class="head-sub" id="page-title">الكويت</p>
+
+            <div class="choice-1">
+                <div class="select-container">
+                    <select id="service-provider" title="name">
+                        <option value="provider">مزود الخدمة</option>
+                        <option value="zain">زين</option>
+                        <option value="omantel">عمانتل</option>
+                        <option value="ooredoo">أوريدو</option>
+                        <option value="stc">STC</option>
+                        <option value="viva">فيفا</option>
+                        <option value="data">بيانات</option>
+                        <option value="kems">KEMS</option>
+                        <option value="mobicom">موبايكوم</option>
+                        <option value="du">دو</option>
+                    </select>
+                </div>
+            </div>
+            <div class="choice-1">
+                <input type="number" id="phone-number" placeholder="رقم الهاتف">
+            </div>
+            <div class="choice-1">
+                <input type="button" id="submit-btn" value="تسجيل">
+            </div>
+        </div>
+    </section>
+
+    <script defer>
+        const translations = {
+            en: {
+                title: "Kuwait",
+                serviceProvider: "Service Provider",
+                phoneNumber: "Phone Number",
+                submitButton: "Register",
+                switchButton: "Switch to Arabic",
+                options: {
+                    provider: "Service Provider",
+                    zain: "Zain",
+                    omantel: "Omantel",
+                    ooredoo: "Ooredoo",
+                    stc: "STC",
+                    viva: "Viva",
+                    data: "Data",
+                    kems: "KEMS",
+                    mobicom: "Mobicom",
+                    du: "Du"
+                }
+            },
+            ar: {
+                title: "الكويت",
+                serviceProvider: "مزود الخدمة",
+                phoneNumber: "رقم الهاتف",
+                submitButton: "تسجيل",
+                switchButton: "التبديل إلى الإنجليزية",
+                options: {
+                    provider: "مزود الخدمة",
+                    zain: "زين",
+                    omantel: "عمانتل",
+                    ooredoo: "أوريدو",
+                    stc: "STC",
+                    viva: "فيفا",
+                    data: "بيانات",
+                    kems: "KEMS",
+                    mobicom: "موبايكوم",
+                    du: "دو"
+                }
+            }
+        };
+
+        let currentLang = 'ar'; // اللغة الافتراضية
+
+        // تبديل اللغة
+        document.getElementById('lang-switch').addEventListener('click', function () {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            translatePage();
+        });
+
+        function translatePage() {
+            const lang = translations[currentLang];
+
+            // تحديث النصوص على الصفحة
+            document.getElementById('page-title').innerText = lang.title; // تحديث اسم الصفحة
+            document.getElementById('service-provider').options[0].innerText = lang.options.provider;
+            document.getElementById('service-provider').options[1].innerText = lang.options.zain;
+            document.getElementById('service-provider').options[2].innerText = lang.options.omantel;
+            document.getElementById('service-provider').options[3].innerText = lang.options.ooredoo;
+            document.getElementById('service-provider').options[4].innerText = lang.options.stc;
+            document.getElementById('service-provider').options[5].innerText = lang.options.viva;
+            document.getElementById('service-provider').options[6].innerText = lang.options.data;
+            document.getElementById('service-provider').options[7].innerText = lang.options.kems;
+            document.getElementById('service-provider').options[8].innerText = lang.options.mobicom;
+            document.getElementById('service-provider').options[9].innerText = lang.options.du;
+            document.getElementById('phone-number').placeholder = lang.phoneNumber;
+            document.getElementById('submit-btn').value = lang.submitButton;
+            document.getElementById('lang-switch').innerText = lang.switchButton;
+        }
+
+        // استدعاء الدالة لترجمة الصفحة بناءً على اللغة الافتراضية
+        translatePage();
+    </script>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
