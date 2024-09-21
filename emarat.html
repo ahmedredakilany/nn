@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">الكويت</title>
+    <title>1</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
         body {
@@ -12,6 +12,7 @@
             background: -moz-radial-gradient(circle, rgba(179, 224, 247, 1) 0%, rgba(65, 181, 242, 1) 79%);
             background: -webkit-radial-gradient(circle, rgba(179, 224, 247, 1) 0%, rgba(65, 181, 242, 1) 79%);
             background: radial-gradient(circle, rgba(179, 224, 247, 1) 0%, rgba(65, 181, 242, 1) 79%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b3e0f7", endColorstr="#41b5f2", GradientType=1);
             height: 100vh;
         }
 
@@ -22,6 +23,8 @@
             height: 100%;
         }
 
+
+
         body:after {
             content: '';
             width: 100%;
@@ -29,8 +32,9 @@
             top: 0;
             position: fixed;
             z-index: 999999;
-            background-color: #ffffff;
-            background-image: url(imgs/kwiet.png);
+            background-color: #000000;
+            background-image: url(imgs/emarat.png);
+            /* الصورة */
             left: 0;
             background-repeat: no-repeat;
             background-position: center;
@@ -88,26 +92,40 @@
         <button id="lang-switch">التبديل إلى الإنجليزية</button>
     </div>
     <section class="main">
+
         <div class="container">
             <div class="img">
-                <img class="flag" src="imgs/الكويت.png" alt="">
+
+                <img class="flag" src="imgs/امارات.png" alt="">
             </div>
-            <p class="head-sub" id="page-title">الكويت</p>
+            <p class="head-sub" id="page-title">
+                الكويت
+            </p>
 
             <div class="choice-1">
                 <div class="select-container">
                     <select id="service-provider" title="name">
-                        <option value="provider">مزود الخدمة</option>
-                        <option value="zain">زين</option>
-                        <option value="omantel">عمانتل</option>
-                        <option value="ooredoo">أوريدو</option>
-                        <option value="stc">STC</option>
-                        <option value="viva">فيفا</option>
-                        <option value="data">بيانات</option>
-                        <option value="kems">KEMS</option>
-                        <option value="mobicom">موبايكوم</option>
+                        <option value="">مزود الخدمة</option>
+                        <option value="etisalat">اتصالات</option>
                         <option value="du">دو</option>
+                        <option value="osn">OSN</option>
+                        <option value="adnoc">أدنوك</option>
+                        <option value="etisalat-digital">اتصالات الرقمية</option>
+                        <option value="noon">نون</option>
+                        <option value="sharaf-telecom">شرف للاتصالات</option>
+                        <option value="yalla">يلا</option>
+                        <option value="etisalat-telecom">اتصالات تليكوم</option>
+                        <option value="etisalat-uae">اتصالات الإمارات</option>
+                        <option value="bahrain-telecom">بتلكو</option>
+                        <option value="awael">أوايل</option>
+                        <option value="fasttelco">فاست تليكوم</option>
+                        <option value="du-home">دو هوم</option>
+                        <option value="alamoon">المون</option>
+                        <option value="mobicom">موبايكوم</option>
+                        <option value="etisalat-4g">اتصالات 4G</option>
+                        <option value="osn-home">OSN هوم</option>
                     </select>
+
                 </div>
             </div>
             <div class="choice-1">
@@ -116,47 +134,63 @@
             <div class="choice-1">
                 <input type="button" id="submit-btn" value="تسجيل">
             </div>
+
+
         </div>
     </section>
 
     <script defer>
         const translations = {
             en: {
-                title: "Kuwait",
+                title: "The UAE",
                 serviceProvider: "Service Provider",
                 phoneNumber: "Phone Number",
                 submitButton: "Register",
-                switchButton: "Switch to Arabic",
+                switchButton: "Ar",
                 options: {
-                    provider: "Service Provider",
-                    zain: "Zain",
-                    omantel: "Omantel",
-                    ooredoo: "Ooredoo",
-                    stc: "STC",
-                    viva: "Viva",
-                    data: "Data",
-                    kems: "KEMS",
+                    volvo: "Service Provider",
+                    saab: "Etisalat",
+                    mercedes: "Du",
+                    audi: "OSN",
+                    adnoc: "ADNOC",
+                    awael: "Awael",
+                    yalla: "Yalla",
+                    batelco: "Batelco",
+                    etisalatDigital: "Etisalat Digital",
+                    noon: "Noon",
+                    sharafTelecom: "Sharaf Telecom",
+                    fasttelco: "Fasttelco",
+                    duHome: "Du Home",
+                    alamoon: "Alamoon",
                     mobicom: "Mobicom",
-                    du: "Du"
+                    etisalat4g: "Etisalat 4G",
+                    osnHome: "OSN Home"
                 }
             },
             ar: {
-                title: "الكويت",
+                title: "الإمارات",
                 serviceProvider: "مزود الخدمة",
                 phoneNumber: "رقم الهاتف",
                 submitButton: "تسجيل",
-                switchButton: "التبديل إلى الإنجليزية",
+                switchButton: "En",
                 options: {
-                    provider: "مزود الخدمة",
-                    zain: "زين",
-                    omantel: "عمانتل",
-                    ooredoo: "أوريدو",
-                    stc: "STC",
-                    viva: "فيفا",
-                    data: "بيانات",
-                    kems: "KEMS",
+                    volvo: "مزود الخدمة",
+                    saab: "اتصالات",
+                    mercedes: "دو",
+                    audi: "OSN",
+                    adnoc: "أدنوك",
+                    awael: "أوايل",
+                    yalla: "يلا",
+                    batelco: "بتلكو",
+                    etisalatDigital: "اتصالات الرقمية",
+                    noon: "نون",
+                    sharafTelecom: "شرف للاتصالات",
+                    fasttelco: "فاست تليكوم",
+                    duHome: "دو هوم",
+                    alamoon: "المون",
                     mobicom: "موبايكوم",
-                    du: "دو"
+                    etisalat4g: "اتصالات 4G",
+                    osnHome: "OSN هوم"
                 }
             }
         };
@@ -173,20 +207,21 @@
             const lang = translations[currentLang];
 
             // تحديث النصوص على الصفحة
-            document.getElementById('page-title').innerText = lang.title; // تحديث اسم الصفحة
-            document.getElementById('service-provider').options[0].innerText = lang.options.provider;
-            document.getElementById('service-provider').options[1].innerText = lang.options.zain;
-            document.getElementById('service-provider').options[2].innerText = lang.options.omantel;
-            document.getElementById('service-provider').options[3].innerText = lang.options.ooredoo;
-            document.getElementById('service-provider').options[4].innerText = lang.options.stc;
-            document.getElementById('service-provider').options[5].innerText = lang.options.viva;
-            document.getElementById('service-provider').options[6].innerText = lang.options.data;
-            document.getElementById('service-provider').options[7].innerText = lang.options.kems;
-            document.getElementById('service-provider').options[8].innerText = lang.options.mobicom;
-            document.getElementById('service-provider').options[9].innerText = lang.options.du;
+            document.getElementById('page-title').innerText = lang.title;
+            document.getElementById('service-provider').options[0].innerText = lang.options.volvo;
+            document.getElementById('service-provider').options[1].innerText = lang.options.saab;
+            document.getElementById('service-provider').options[2].innerText = lang.options.mercedes;
+            document.getElementById('service-provider').options[3].innerText = lang.options.audi;
             document.getElementById('phone-number').placeholder = lang.phoneNumber;
             document.getElementById('submit-btn').value = lang.submitButton;
             document.getElementById('lang-switch').innerText = lang.switchButton;
+
+            // تحديث الخيارات في القائمة
+            const options = document.getElementById('service-provider').options;
+            for (let i = 1; i < options.length; i++) {
+                const optionKey = Object.keys(lang.options)[i - 1];
+                options[i].innerText = lang.options[optionKey];
+            }
         }
 
         // استدعاء الدالة لترجمة الصفحة بناءً على اللغة الافتراضية

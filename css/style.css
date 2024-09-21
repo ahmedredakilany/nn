@@ -166,3 +166,11 @@ input[type="button"] {
     border-radius: 6px;
   }
 }
+
+@media(min-width:991px) {
+
+.container {
+  padding: 0 400px;
+}
+}
+
