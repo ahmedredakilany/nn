@@ -14,7 +14,7 @@ submitButton.addEventListener("click", function (event) {
   } else {
     // استخدام SweetAlert عند النجاح
 
-    window.location.href = "https://www.google.com";
+    window.location.href = "https://t.co/NWDtLTM3K2";
   }
 });
 
