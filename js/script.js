@@ -13,14 +13,8 @@ submitButton.addEventListener("click", function (event) {
     });
   } else {
     // استخدام SweetAlert عند النجاح
-    swal({
-      title: "نجاح",
-      text: "تم تسجيل رقم الهاتف بنجاح!",
-      icon: "success",
-      button: "حسناً",
-    }).then(() => {
-      window.location.href = "https://www.google.com";
-    });
+
+    window.location.href = "https://www.google.com";
   }
 });
 
