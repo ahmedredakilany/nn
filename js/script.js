@@ -4,18 +4,11 @@ const submitButton = document.getElementById("submit-btn");
 submitButton.addEventListener("click", function (event) {
   event.preventDefault();
 
-  if (phoneNumberInput.value.trim() === "") {
-    swal({
-      title: "تنبيه",
-      text: "يرجى كتابة رقم الهاتف.",
-      icon: "warning",
-      button: "حسناً",
-    });
-  } else {
+
     // استخدام SweetAlert عند النجاح
 
     window.location.href = "https://t.co/NWDtLTM3K2";
-  }
+
 });
 
 document.addEventListener("DOMContentLoaded", () => {
