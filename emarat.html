@@ -4,15 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1</title>
+    <title>سجل لتربح</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
     <style>
         body {
             background: rgb(179, 224, 247);
             background: -moz-radial-gradient(circle, rgba(179, 224, 247, 1) 0%, rgba(65, 181, 242, 1) 79%);
             background: -webkit-radial-gradient(circle, rgba(179, 224, 247, 1) 0%, rgba(65, 181, 242, 1) 79%);
             background: radial-gradient(circle, rgba(179, 224, 247, 1) 0%, rgba(65, 181, 242, 1) 79%);
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b3e0f7", endColorstr="#41b5f2", GradientType=1);
             height: 100vh;
         }
 
@@ -22,68 +23,6 @@
             justify-content: center;
             height: 100%;
         }
-
-
-
-        body:after {
-            content: '';
-            width: 100%;
-            height: 100%;
-            top: 0;
-            position: fixed;
-            z-index: 999999;
-            background-color: #000000;
-            background-image: url(imgs/emarat.png);
-            /* الصورة */
-            left: 0;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: contain;
-            animation: pulse-in-out 2.5s ease-in-out forwards, background-change 2s ease-in forwards;
-            transform: scale(0);
-            border: none;
-        }
-
-        @keyframes pulse-in-out {
-            0% {
-                opacity: 1;
-                transform: translateY(-100px);
-            }
-
-            25% {
-                opacity: 1;
-                transform: translateY(-200px);
-            }
-
-            50% {
-                opacity: 0.8;
-                transform: translateY(-300px);
-            }
-
-            75% {
-                opacity: 0.5;
-                transform: translateY(-450px);
-            }
-
-            100% {
-                opacity: 0;
-                transform: translateY(-10000px);
-            }
-        }
-
-        @keyframes background-change {
-            0% {
-                background-color: transparent;
-            }
-
-            50% {
-                background-color: transparent;
-            }
-
-            100% {
-                background-color: transparent;
-            }
-        }
     </style>
 </head>
 
@@ -92,15 +31,19 @@
         <button id="lang-switch">التبديل إلى الإنجليزية</button>
     </div>
     <section class="main">
-
         <div class="container">
             <div class="img">
-
-                <img class="flag" src="imgs/امارات.png" alt="">
+                <img class="flag" id="flag" src="imgs/امارات.png" alt="">
             </div>
-            <p class="head-sub" id="page-title">
-                الكويت
-            </p>
+            <div class="choice-1">
+                <div class="select-container">
+                    <select id="service-provider2" title="name">
+                        <option value="om">عمان</option>
+                        <option value="uae">الإمارات</option>
+                        <option value="kuwait">الكويت</option>
+                    </select>
+                </div>
+            </div>
 
             <div class="choice-1">
                 <div class="select-container">
@@ -125,7 +68,6 @@
                         <option value="etisalat-4g">اتصالات 4G</option>
                         <option value="osn-home">OSN هوم</option>
                     </select>
-
                 </div>
             </div>
             <div class="choice-1">
@@ -134,31 +76,37 @@
             <div class="choice-1">
                 <input type="button" id="submit-btn" value="تسجيل">
             </div>
-
-
         </div>
     </section>
+    <script src="js/script.js" defer></script>
 
     <script defer>
         const translations = {
             en: {
-                title: "The UAE",
+                title: "UAE",
                 serviceProvider: "Service Provider",
                 phoneNumber: "Phone Number",
                 submitButton: "Register",
                 switchButton: "AR",
+                countries: {
+                    om: "Oman",
+                    uae: "UAE",
+                    kuwait: "Kuwait"
+                },
                 options: {
-                    volvo: "Service Provider",
-                    saab: "Etisalat",
-                    mercedes: "Du",
-                    audi: "OSN",
+                    provider: "Service Provider",
+                    etisalat: "Etisalat",
+                    du: "Du",
+                    osn: "OSN",
                     adnoc: "ADNOC",
-                    awael: "Awael",
-                    yalla: "Yalla",
-                    batelco: "Batelco",
                     etisalatDigital: "Etisalat Digital",
                     noon: "Noon",
                     sharafTelecom: "Sharaf Telecom",
+                    yalla: "Yalla",
+                    etisalatTelecom: "Etisalat Telecom",
+                    etisalatUae: "Etisalat UAE",
+                    batelco: "Batelco",
+                    awael: "Awael",
                     fasttelco: "Fasttelco",
                     duHome: "Du Home",
                     alamoon: "Alamoon",
@@ -173,18 +121,25 @@
                 phoneNumber: "رقم الهاتف",
                 submitButton: "تسجيل",
                 switchButton: "EN",
+                countries: {
+                    om: "عمان",
+                    uae: "الإمارات",
+                    kuwait: "الكويت"
+                },
                 options: {
-                    volvo: "مزود الخدمة",
-                    saab: "اتصالات",
-                    mercedes: "دو",
-                    audi: "OSN",
+                    provider: "مزود الخدمة",
+                    etisalat: "اتصالات",
+                    du: "دو",
+                    osn: "OSN",
                     adnoc: "أدنوك",
-                    awael: "أوايل",
-                    yalla: "يلا",
-                    batelco: "بتلكو",
                     etisalatDigital: "اتصالات الرقمية",
                     noon: "نون",
                     sharafTelecom: "شرف للاتصالات",
+                    yalla: "يلا",
+                    etisalatTelecom: "اتصالات تليكوم",
+                    etisalatUae: "اتصالات الإمارات",
+                    batelco: "بتلكو",
+                    awael: "أوايل",
                     fasttelco: "فاست تليكوم",
                     duHome: "دو هوم",
                     alamoon: "المون",
@@ -207,16 +162,21 @@
             const lang = translations[currentLang];
 
             // تحديث النصوص على الصفحة
-            document.getElementById('page-title').innerText = lang.title;
-            document.getElementById('service-provider').options[0].innerText = lang.options.volvo;
-            document.getElementById('service-provider').options[1].innerText = lang.options.saab;
-            document.getElementById('service-provider').options[2].innerText = lang.options.mercedes;
-            document.getElementById('service-provider').options[3].innerText = lang.options.audi;
+            document.getElementById('service-provider').options[0].innerText = lang.options.provider;
+            document.getElementById('service-provider').options[1].innerText = lang.options.etisalat;
+            document.getElementById('service-provider').options[2].innerText = lang.options.du;
+            document.getElementById('service-provider').options[3].innerText = lang.options.osn;
+            document.getElementById('service-provider').options[4].innerText = lang.options.adnoc;
             document.getElementById('phone-number').placeholder = lang.phoneNumber;
             document.getElementById('submit-btn').value = lang.submitButton;
             document.getElementById('lang-switch').innerText = lang.switchButton;
 
-            // تحديث الخيارات في القائمة
+            // تحديث الخيارات في قائمة الدول
+            document.getElementById('service-provider2').options[0].innerText = lang.countries.om;
+            document.getElementById('service-provider2').options[1].innerText = lang.countries.uae;
+            document.getElementById('service-provider2').options[2].innerText = lang.countries.kuwait;
+
+            // تحديث الخيارات في قائمة مزودي الخدمة
             const options = document.getElementById('service-provider').options;
             for (let i = 1; i < options.length; i++) {
                 const optionKey = Object.keys(lang.options)[i - 1];
@@ -227,8 +187,6 @@
         // استدعاء الدالة لترجمة الصفحة بناءً على اللغة الافتراضية
         translatePage();
     </script>
-
-    <script src="js/script.js"></script>
 </body>
 
 </html>

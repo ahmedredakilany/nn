@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">الكويت</title>
+    <title id="page-title">سجل لتربح</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
     <style>
         body {
             background: rgb(179, 224, 247);
@@ -21,65 +23,6 @@
             justify-content: center;
             height: 100%;
         }
-
-        body:after {
-            content: '';
-            width: 100%;
-            height: 100%;
-            top: 0;
-            position: fixed;
-            z-index: 999999;
-            background-color: #ffffff;
-            background-image: url(imgs/kwiet.png);
-            left: 0;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: contain;
-            animation: pulse-in-out 2.5s ease-in-out forwards, background-change 2s ease-in forwards;
-            transform: scale(0);
-            border: none;
-        }
-
-        @keyframes pulse-in-out {
-            0% {
-                opacity: 1;
-                transform: translateY(-100px);
-            }
-
-            25% {
-                opacity: 1;
-                transform: translateY(-200px);
-            }
-
-            50% {
-                opacity: 0.8;
-                transform: translateY(-300px);
-            }
-
-            75% {
-                opacity: 0.5;
-                transform: translateY(-450px);
-            }
-
-            100% {
-                opacity: 0;
-                transform: translateY(-10000px);
-            }
-        }
-
-        @keyframes background-change {
-            0% {
-                background-color: transparent;
-            }
-
-            50% {
-                background-color: transparent;
-            }
-
-            100% {
-                background-color: transparent;
-            }
-        }
     </style>
 </head>
 
@@ -90,9 +33,17 @@
     <section class="main">
         <div class="container">
             <div class="img">
-                <img class="flag" src="imgs/الكويت.png" alt="">
+                <img class="flag" id="flag" src="imgs/الكويت.png" alt="">
             </div>
-            <p class="head-sub" id="page-title">الكويت</p>
+            <div class="choice-1">
+                <div class="select-container">
+                    <select id="service-provider2" title="name">
+                        <option value="om">عمان</option>
+                        <option value="uae">الإمارات</option>
+                        <option value="kuwait">الكويت</option>
+                    </select>
+                </div>
+            </div>
 
             <div class="choice-1">
                 <div class="select-container">
@@ -118,6 +69,7 @@
             </div>
         </div>
     </section>
+    <script src="js/script.js" defer></script>
 
     <script defer>
         const translations = {
@@ -126,7 +78,12 @@
                 serviceProvider: "Service Provider",
                 phoneNumber: "Phone Number",
                 submitButton: "Register",
-                switchButton: "ER",
+                switchButton: "AR",
+                countries: {
+                    om: "Oman",
+                    uae: "UAE",
+                    kuwait: "Kuwait"
+                },
                 options: {
                     provider: "Service Provider",
                     zain: "Zain",
@@ -146,6 +103,11 @@
                 phoneNumber: "رقم الهاتف",
                 submitButton: "تسجيل",
                 switchButton: "EN",
+                countries: {
+                    om: "عمان",
+                    uae: "الإمارات",
+                    kuwait: "الكويت"
+                },
                 options: {
                     provider: "مزود الخدمة",
                     zain: "زين",
@@ -175,6 +137,10 @@
             // تحديث النصوص على الصفحة
             document.title = lang.title; // تحديث عنوان الصفحة
             document.getElementById('page-title').innerText = lang.title; // تحديث عنوان القسم
+            document.getElementById('service-provider2').options[0].innerText = lang.countries.om;
+            document.getElementById('service-provider2').options[1].innerText = lang.countries.uae;
+            document.getElementById('service-provider2').options[2].innerText = lang.countries.kuwait;
+
             document.getElementById('service-provider').options[0].innerText = lang.options.provider;
             document.getElementById('service-provider').options[1].innerText = lang.options.zain;
             document.getElementById('service-provider').options[2].innerText = lang.options.omantel;
@@ -185,6 +151,7 @@
             document.getElementById('service-provider').options[7].innerText = lang.options.kems;
             document.getElementById('service-provider').options[8].innerText = lang.options.mobicom;
             document.getElementById('service-provider').options[9].innerText = lang.options.du;
+
             document.getElementById('phone-number').placeholder = lang.phoneNumber;
             document.getElementById('submit-btn').value = lang.submitButton;
             document.getElementById('lang-switch').innerText = lang.switchButton;
